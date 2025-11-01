@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 __pycache__/
 *.py[cod]
 *$py.class
@@ -25,3 +26,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+=======
+.env
+whitelist.json
+__pycache__/
+>>>>>>> 36b75c0727e5e23d124ee384948ba6cd7ea96a45

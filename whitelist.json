@@ -1,10 +1,14 @@
 [
     {
         "discord_id": "533083797801926679",
+<<<<<<< HEAD
         "vrchat_username": "shmeep",
         "roles": [
             1433955314356584540,
             1358207768351473970
         ]
+=======
+        "vrchat_username": "shmezzy"
+>>>>>>> 36b75c0727e5e23d124ee384948ba6cd7ea96a45
     }
 ]
