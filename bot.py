@@ -34,7 +34,7 @@ def save_json(data):
 # ---------------- GITHUB UPLOAD ----------------
 def upload_to_github():
     if not (GITHUB_TOKEN and GITHUB_USERNAME and REPO_PATH):
-        print("⚠️ GitHub credentials missing.")
+        print("GitHub credentials missing.")
         return
 
     repo_url = f"https://{GITHUB_USERNAME}:{GITHUB_TOKEN}@github.com/{GITHUB_USERNAME}/vrchat-whitelist.git"
@@ -52,13 +52,13 @@ def upload_to_github():
         try:
             subprocess.run(["git", "-C", REPO_PATH, "commit", "-m", "Update whitelist"], check=True)
         except subprocess.CalledProcessError:
-            print("⚠️ Nothing to commit, skipping commit.")
+            print("Nothing to commit, skipping commit.")
 
         subprocess.run(["git", "-C", REPO_PATH, "push", repo_url, current_branch], check=True)
-        print("✅ whitelist.json successfully uploaded to GitHub!")
+        print("whitelist.json successfully uploaded to GitHub!")
 
     except subprocess.CalledProcessError as e:
-        print(f"❌ GitHub upload failed: {e}")
+        print(f"GitHub upload failed: {e}")
 
 # ---------------- DISCORD BOT ----------------
 intents = discord.Intents.default()
@@ -78,14 +78,14 @@ async def register(interaction: discord.Interaction, username: str):
     member = interaction.user
 
     if not any(role.id in ALLOWED_ROLES for role in member.roles):
-        await interaction.response.send_message("❌ You do not have permission to register.", ephemeral=True)
+        await interaction.response.send_message("You do not have permission to register.", ephemeral=True)
         return
 
     data = load_json()
     if any(u["discord_id"] == str(member.id) for u in data):
         existing = next(u for u in data if u["discord_id"] == str(member.id))
         await interaction.response.send_message(
-            f"❌ Already registered as `{existing['vrchat_username']}`! Use `/unregister` first.", ephemeral=True
+            f"Already registered as `{existing['vrchat_username']}`! Use `/unregister` first.", ephemeral=True
         )
         return
 
@@ -100,7 +100,7 @@ async def register(interaction: discord.Interaction, username: str):
 
     save_json(data)
     upload_to_github()
-    await interaction.response.send_message(f"✅ VRChat username `{username}` registered successfully!", ephemeral=True)
+    await interaction.response.send_message(f"VRChat username `{username}` registered successfully!", ephemeral=True)
 
 @tree.command(name="unregister", description="Unregister your VRChat username", guild=discord.Object(id=GUILD_ID))
 async def unregister(interaction: discord.Interaction):
@@ -108,13 +108,13 @@ async def unregister(interaction: discord.Interaction):
     data = load_json()
 
     if not any(u["discord_id"] == str(member.id) for u in data):
-        await interaction.response.send_message("❌ You are not registered yet!", ephemeral=True)
+        await interaction.response.send_message("You are not registered yet!", ephemeral=True)
         return
 
     data = [u for u in data if u["discord_id"] != str(member.id)]
     save_json(data)
     upload_to_github()
-    await interaction.response.send_message("✅ You have been unregistered.", ephemeral=True)
+    await interaction.response.send_message("You have been unregistered.", ephemeral=True)
 
 # ---------------- MEMBER ROLE UPDATE ----------------
 @client.event
