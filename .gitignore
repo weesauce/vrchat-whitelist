@@ -1,6 +1,6 @@
 .env
+start.sh
+venv
 start_bot.bat
 vrchat-bot
-__pycache__/
-venv
-start.sh
+__pycache__/h
