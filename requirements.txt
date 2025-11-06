@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 discord.py
 python-dotenv
 requests
-=======
-discord.py
-python-dotenv
-requests
->>>>>>> 09a6aa8 (init commit)
+
