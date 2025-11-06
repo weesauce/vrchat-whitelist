@@ -1,6 +1,9 @@
 .env
 start.sh
-venv
+venv/
+*.swp
+*.swo
+*.DS_Store
 start_bot.bat
 vrchat-bot
 __pycache__/h
