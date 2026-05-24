@@ -1,22 +1,6 @@
-[
-    {
-        "vrchat_username": "n\u0430rr",
-        "highest_role": "Lowest"
-    },
-    {
-        "vrchat_username": "Shmezzy",
-        "highest_role": "Highest"
-    },
-    {
-        "vrchat_username": "Smoky~",
-        "highest_role": "Lowest"
-    },
-    {
-        "vrchat_username": "Arkkyy",
-        "highest_role": "Lowest"
-    },
-    {
-        "vrchat_username": "Jabby Star",
-        "highest_role": "Lowest"
-    }
-]
+{
+    "nаrr": "Lowest",
+    "Smoky~": "Lowest",
+    "Arkkyy": "Lowest",
+    "Jabby Star": "Lowest"
+}
